@@ -1,123 +1,124 @@
-import os, xbmc, xbmcaddon
+import xbmcaddon
+
+import os
 
 #########################################################
-### User Edit Variables #################################
+#         Global Variables - DON'T EDIT!!!              #
 #########################################################
-ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
-ADDONTITLE     = '[B][COLOR dodgerblue]Aftermath[/COLOR] [COLOR white]Wizard[/COLOR][/B]'
-BUILDERNAME    = 'Aftermath'
-EXCLUDES       = [ADDON_ID, 'repository.aftermath']
-# Enable/Disable the text file caching with 'Yes' or 'No' and age being how often it rechecks in minutes
-CACHETEXT      = 'Yes'
-CACHEAGE       = 30
+ADDON_ID = xbmcaddon.Addon().getAddonInfo('id')
+PATH = xbmcaddon.Addon().getAddonInfo('path')
+ART = os.path.join(PATH, 'resources', 'media')
+#########################################################
+
+#########################################################
+#        User Edit Variables                            #
+#########################################################
+ADDONTITLE = '[COLOR red][B]Personal[/B][/COLOR]Wizard'
+BUILDERNAME = 'LTO'
+EXCLUDES = [ADDON_ID, 'repository.personalwizard']
 # Text File with build info in it.
-BUILDFILE      = 'http://cb.srfx.in/builds.txt'
-# How often you would list it to check for build updates in days
+BUILDFILE = 'http://ltosimplistic.hopto.org/Crap/personalbuilds.txt'
+# How often you would like it to check for build updates in days
 # 0 being every startup of kodi
-UPDATECHECK    = 0
+UPDATECHECK = 0
 # Text File with apk info in it.  Leave as 'http://' to ignore
-APKFILE        = 'http://cb.srfx.in/apks.txt'
+APKFILE = 'http://ltosimplistic.hopto.org/APK/apks/personalAPKinfo.txt'
 # Text File with Youtube Videos urls.  Leave as 'http://' to ignore
-YOUTUBETITLE   = ''
-YOUTUBEFILE    = 'http://'
+YOUTUBETITLE = ''
+YOUTUBEFILE = 'http://'
 # Text File for addon installer.  Leave as 'http://' to ignore
-ADDONFILE      = 'http://cb.srfx.in/addons.txt'
+ADDONFILE = 'http://'
 # Text File for advanced settings.  Leave as 'http://' to ignore
-ADVANCEDFILE   = 'http://aftermathwizard.net/testtext/advanced.txt'
-
-# Dont need to edit just here for icons stored locally
-PATH           = xbmcaddon.Addon().getAddonInfo('path')
-ART            = os.path.join(PATH, 'resources', 'art')
+ADVANCEDFILE = 'http://'
+#########################################################
 
 #########################################################
-### THEMING MENU ITEMS ##################################
+#        Theming Menu Items                             #
 #########################################################
 # If you want to use locally stored icons the place them in the Resources/Art/
 # folder of the wizard then use os.path.join(ART, 'imagename.png')
 # do not place quotes around os.path.join
 # Example:  ICONMAINT     = os.path.join(ART, 'mainticon.png')
-#           ICONSETTINGS  = 'http://aftermathwizard.net/repo/wizard/settings.png'
+#           ICONSETTINGS  = 'https://www.yourhost.com/repo/wizard/settings.png'
 # Leave as http:// for default icon
-ICONBUILDS     = os.path.join(ART, 'builds.png')
-ICONMAINT      = os.path.join(ART, 'Maintenance.png')
-ICONSPEED      = 'http://'
-ICONAPK        = os.path.join(ART, 'apkinstaller.png')
-ICONADDONS     = os.path.join(ART, 'addoninstaller.png')
-ICONYOUTUBE    = 'http://'
-ICONSAVE       = os.path.join(ART, 'savedata.png')
-ICONTRAKT      = os.path.join(ART, 'keeptrakt.png')
-ICONREAL       = os.path.join(ART, 'keepdebrid.png')
-ICONLOGIN      = os.path.join(ART, 'keeplogin.png')
-ICONCONTACT    = os.path.join(ART, 'information.png')
-ICONSETTINGS   = os.path.join(ART, 'settings.png')
-# Hide the ====== seperators 'Yes' or 'No'
-HIDESPACERS    = 'No'
-# Character used in seperator
-SPACER         = '='
+ICONBUILDS = os.path.join(ART, 'builds.png')
+ICONMAINT = os.path.join(ART, 'maintenance.png')
+ICONSPEED = os.path.join(ART, 'speed.png')
+ICONAPK = os.path.join(ART, 'apkinstaller.png')
+ICONADDONS = os.path.join(ART, 'addoninstaller.png')
+ICONYOUTUBE = os.path.join(ART, 'youtube.png')
+ICONSAVE = os.path.join(ART, 'savedata.png')
+ICONTRAKT = os.path.join(ART, 'keeptrakt.png')
+ICONREAL = os.path.join(ART, 'keepdebrid.png')
+ICONLOGIN = os.path.join(ART, 'keeplogin.png')
+ICONCONTACT = os.path.join(ART, 'information.png')
+ICONSETTINGS = os.path.join(ART, 'settings.png')
+# Hide the section separators 'Yes' or 'No'
+HIDESPACERS = 'No'
+# Character used in separator
+SPACER = '='
 
 # You can edit these however you want, just make sure that you have a %s in each of the
 # THEME's so it grabs the text from the menu item
-COLOR1         = 'dodgerblue'
-COLOR2         = 'white'
-# Primary menu items   / %s is the menu item and is required
-THEME1         = '[COLOR '+COLOR1+'][B][I]([COLOR '+COLOR2+']Aftermath[/COLOR])[/B][/COLOR] [COLOR '+COLOR2+']%s[/COLOR][/I]'
-# Build Names          / %s is the menu item and is required
-THEME2         = '[COLOR '+COLOR2+']%s[/COLOR]'
-# Alternate items      / %s is the menu item and is required
-THEME3         = '[COLOR '+COLOR1+']%s[/COLOR]'
-# Current Build Header / %s is the menu item and is required
-THEME4         = '[COLOR '+COLOR1+']Current Build:[/COLOR] [COLOR '+COLOR2+']%s[/COLOR]'
-# Current Theme Header / %s is the menu item and is required
-THEME5         = '[COLOR '+COLOR1+']Current Theme:[/COLOR] [COLOR '+COLOR2+']%s[/COLOR]'
+COLOR1 = 'red'
+COLOR2 = 'white'
+# Primary menu items   / {0} is the menu item and is required
+THEME1 = u'[COLOR {color1}][I]([COLOR {color1}][B]Personal[/B][/COLOR][COLOR {color2}]Wizard[COLOR {color1}])[/I][/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
+# Build Names          / {0} is the menu item and is required
+THEME2 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
+# Alternate items      / {0} is the menu item and is required
+THEME3 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
+# Current Build Header / {0} is the menu item and is required
+THEME4 = u'[COLOR {color1}]Current Build:[/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
+# Current Theme Header / {0} is the menu item and is required
+THEME5 = u'[COLOR {color1}]Current Theme:[/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
 
 # Message for Contact Page
 # Enable 'Contact' menu item 'Yes' hide or 'No' dont hide
-HIDECONTACT    = 'No'
+HIDECONTACT = 'No'
 # You can add \n to do line breaks
-CONTACT        = 'Thank you for choosing Aftermath Wizard.\n\nContact us on facebook at http://facebook.com'
-#Images used for the contact window.  http:// for default icon and fanart
-CONTACTICON    = os.path.join(ART, 'qricon.png')
-CONTACTFANART  = 'http://'
+CONTACT = 'Thank you for choosing PersonalWizard.\n\nContact us through gmail at kodifiretek@gmail.com/'
+# Images used for the contact window.  http:// for default icon and fanart
+CONTACTICON = os.path.join(ART, 'qricon.png')
+CONTACTFANART = 'http://'
 #########################################################
 
 #########################################################
-### AUTO UPDATE #########################################
-########## FOR THOSE WITH NO REPO #######################
+#        Auto Update For Those With No Repo             #
+#########################################################
 # Enable Auto Update 'Yes' or 'No'
-AUTOUPDATE     = 'No'
-# Url to wizard version
-WIZARDFILE     = BUILDFILE
+AUTOUPDATE = 'No'
 #########################################################
 
 #########################################################
-### AUTO INSTALL ########################################
-########## REPO IF NOT INSTALLED ########################
+#        Auto Install Repo If Not Installed             #
+#########################################################
 # Enable Auto Install 'Yes' or 'No'
-AUTOINSTALL    = 'Yes'
+AUTOINSTALL = 'Yes'
 # Addon ID for the repository
-REPOID         = 'repository.aftermath'
+REPOID = 'repository.personalwizard'
 # Url to Addons.xml file in your repo folder(this is so we can get the latest version)
-REPOADDONXML   = 'https://raw.githubusercontent.com/surfacingx/Aftermath/master/repository.aftermath/addon.xml'
+REPOADDONXML = 'http://ltosimplistic.hopto.org/Crap/addons.xml'
 # Url to folder zip is located in
-REPOZIPURL     = 'https://raw.githubusercontent.com/surfacingx/Aftermath/master/repository.aftermath/'
+REPOZIPURL = 'http://ltosimplistic.hopto.org/Crap/'
 #########################################################
 
 #########################################################
-### NOTIFICATION WINDOW##################################
+#        Notification Window                            #
 #########################################################
 # Enable Notification screen Yes or No
-ENABLE         = 'Yes'
+ENABLE = 'No'
 # Url to notification file
-NOTIFICATION   = 'http://cb.srfx.in/notify.txt'
+NOTIFICATION = 'http://'
 # Use either 'Text' or 'Image'
-HEADERTYPE     = 'Text'
+HEADERTYPE = 'Text'
 # Font size of header
-FONTHEADER     = 'Font14'
-HEADERMESSAGE  = '[B][COLOR dodgerblue]Aftermath[/COLOR] [COLOR white]Wizard[/COLOR][/B]'
+FONTHEADER = 'Font14'
+HEADERMESSAGE = '[COLOR limegreen][B]Personal[/B][/COLOR]Wizard'
 # url to image if using Image 424x180
-HEADERIMAGE    = ''
+HEADERIMAGE = 'http://'
 # Font for Notification Window
-FONTSETTINGS   = 'Font13'
+FONTSETTINGS = 'Font13'
 # Background for Notification Window
-BACKGROUND     = 'http://cb.srfx.in/img/fanart.jpg'
+BACKGROUND = 'http://'
 #########################################################
